@@ -1,0 +1,9 @@
+{
+  "name": "retme",
+  "version": "0.0.1",
+  "description": "Real Estate Marketplace",
+  "main": "index.js",
+  "repository": "git@github.com:eddie-wainaina1/RetMe.git",
+  "author": "Eddie Njoroge <njorogeeddie434@gmail.com>",
+  "private": true
+}
