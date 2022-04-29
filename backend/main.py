@@ -1,14 +1,14 @@
 from typing import Optional
-
 from fastapi import FastAPI
+from databaseconn import getCursor
 
 app = FastAPI()
-
+cursor = getCursor()
 
 @app.get("/")
 def read_root():
-    return "All listed assets"
-
+    assets = cursor.execute(""" SELECT * FROM assets """).fetchall()
+    return assets | "No assets currently in database"
 
 @app.get("/asset/{asset_id}")
 def get_asset(asset_id: int):
