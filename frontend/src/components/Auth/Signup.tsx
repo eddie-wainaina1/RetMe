@@ -14,12 +14,14 @@ export const Signup = ()=>{
             sx={{ 
                 minWidth: 400, 
                 maxWidth: 600, 
-                marginLeft: "15%"
+                margin: "10px",
+                marginLeft: "20%"
                 }}
         >
         <Card variant="outlined">
             <CardContent>
                 <h2><i>Sign up</i></h2>
+                <Divider/>
                 <Grid container spacing={1} >
                     <Grid item xs={3}
                     style={{
@@ -101,7 +103,6 @@ export const Signup = ()=>{
                         />
                     </Grid>
                 </Grid>
-                <Divider/>
                 <Grid container spacing={1} >
                 <Grid item xs={3}
                     style={{
