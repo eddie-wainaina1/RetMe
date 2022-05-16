@@ -29,7 +29,7 @@ function App() {
        <Sidebar/>
        </Grid>
      }
-     <Grid item xs={9}>
+     <Grid item xs={isSidebarOpen?9:12}>
         {/* <Login/> */}
         {/* <Signup/> */}
         <BigHeader title="big title"

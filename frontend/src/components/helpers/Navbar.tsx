@@ -36,6 +36,7 @@ export const Navbar = (props:NavbarProps)=>{
             RetMe
           </Typography>
           <Button color="inherit">Login</Button>
+          <Button color="inherit">Sign Up</Button>
         </Toolbar>
     </AppBar>
 }
