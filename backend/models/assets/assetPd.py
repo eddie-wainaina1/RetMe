@@ -16,5 +16,6 @@ class AssetModify(BaseModel):
     type:Optional(str)
     description: Optional(str)
     available: Optional(bool)
-
+    class Config:
+        orm_mode = True
     

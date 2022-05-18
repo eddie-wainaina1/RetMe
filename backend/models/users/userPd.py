@@ -1,22 +1,24 @@
 from pydantic import BaseModel, EmailStr 
 import datetime
-class User(BaseModel):
-    first_name:str 
-    last_name:str 
-    email:EmailStr 
-    username:str
-    password_hashed:str
-    created:datetime.datetime
-    mobile:str
 
-class UserIn(BaseModel):
+class UserBase(BaseModel):
     first_name:str 
-    last_name:str 
+    last_name:str
+    username:str
+    created:datetime.datetime
+
+class UserSave(UserBase):
     email:EmailStr 
-    username:str
+    password_hashed:str
+    mobile:str
+    class Config:
+        orm_mode = True
+
+class UserIn(UserBase):
+    email:EmailStr
     password_raw:str
-    created:datetime.datetime
     mobile: str
-class UserOut(BaseModel):
-    username:str
-    created:datetime.datetime
+
+class UserOut(UserBase):
+    class Config:
+        orm_mode = True
