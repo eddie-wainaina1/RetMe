@@ -1,24 +1,33 @@
-from ...app.main import app
+from fastapi import APIRouter, Depends, HTTPException
+from ...app.dependencies.dependencies import get_token_header
 
-@app.get('/')
-@app.get('/assets')
+asset_router = APIRouter(
+    prefix="/assets",
+    tags=["assets"],
+    dependencies=[Depends(get_token_header)],
+    responses={
+        404: {"description": "Not found"}
+    },
+)
+
+@asset_router.get('/')
 def getAsset():
     return "all assets"
 
-@app.get('/assets/{id}')
+@asset_router.get('/{id}')
 def getAssetById(id):
     return id 
 
-@app.post('/assets/batch')
+@asset_router.post('/batch')
 def saveAssets(assets):
     for i in assets:
         saveAsset(i)
 
-@app.post('/assets')
+@asset_router.post('/')
 def saveAsset(asset):
     return "saving asset"
 
-@app.put('assets/{id}')
+@asset_router.put('/{id}')
 def modifyAsset(asset):
     currentAsset = {}
     #fetch asset
@@ -26,7 +35,7 @@ def modifyAsset(asset):
         currentAsset = asset 
     return currentAsset
 
-@app.delete('assets/{id}')
+@asset_router.delete('assets/{id}')
 def deleteAsset(id):
     return f"deleting asset with id={id}"
 

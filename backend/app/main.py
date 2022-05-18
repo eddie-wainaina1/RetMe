@@ -1,7 +1,21 @@
-from fastapi import FastAPI 
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+from .dependencies.dependencies import get_query_token, get_token_header
+from ..models.routes import assetRoutes, reportRoutes, userRoutes
+from .internal import admin
+
+app = FastAPI(dependencies=[Depends(get_query_token)])
+app.include_router(assetRoutes.asset_router)
+app.include_router(userRoutes.user_router)
+app.include_router(
+    admin.router,
+    prefix="/admin",
+    tags=["admin"],
+    dependencies=[Depends(get_token_header)],
+    responses={418: {"description": "I'm a teapot"}},
+)
+
 
 origins = [
     "http://localhost.tiangolo.com",
