@@ -2,7 +2,7 @@ from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .dependencies.dependencies import get_query_token, get_token_header
-from ..models.routes import assetRoutes, reportRoutes, userRoutes
+from models.routes import assetRoutes, userRoutes
 from .internal import admin
 
 app = FastAPI(dependencies=[Depends(get_query_token)])

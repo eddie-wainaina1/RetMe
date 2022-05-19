@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
-from ...app.dependencies.dependencies import get_token_header
+from app.dependencies.dependencies import get_token_header
 
 asset_router = APIRouter(
     prefix="/assets",
